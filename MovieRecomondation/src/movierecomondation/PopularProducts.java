@@ -42,10 +42,6 @@ public class PopularProducts {
             result[i] = products.get(i);
         }
         
-        for(Product prod: result) {
-            System.out.println("ID = " + prod.getId() + " - Name = " + prod.getName());
-        }
-        
         return result;
     }
     
@@ -69,7 +65,7 @@ public class PopularProducts {
                 double rating = Double.parseDouble(part[8]);
                 int price = Integer.parseInt(part[9]);
 
-                //Create product object for this entry
+                //Create product object for this file line
                 products.add(new Product(id, name, year, keywords, rating, price));
                 
             }
@@ -104,7 +100,7 @@ public class PopularProducts {
                     purchased.add(Integer.parseInt(part));                      //Parsing to int for comparason with popularProduct (Both Id's now int)
                 }
 
-                //Create user object for this entry
+                //Create user object for this file line
                 users.add(new User(id, name, viewed, purchased));
                 
             }
@@ -118,29 +114,22 @@ public class PopularProducts {
     }
 
     private void sortProduct() {
-        Collections.sort(products, new ProductComparator());
-        for(Product product: products) {
-            System.out.println("Movie with ID " + product.getId() + " reached a total score of " + product.getTotalScore());
-        }
+        Collections.sort(products, new ProductComparator());                    //Might be a redundant method. Alternative could be to make it more generic.
     }
 
     private void calcCombinedScore() {
-        int movieSales[] = new int[41];
+        int movieSales[] = new int[41];                                         //41 length in order to ignore zero-indexing
         
+        //Counting amount of movies sold. ATTENTION: Intentionally circumventing zero-indexing for the index to match movie-ID later
         for(User user : users) {
             for(int movie: user.getPurchased()) {
-                //System.out.println("index " + movie + " is being inserted");
                 movieSales[movie] += 1;
             }
         }
         
-        for(int sale: movieSales) {
-            //System.out.println(sale);
-        }
-        
+        //Adding on +1 per sold unit as well as adding the rating. All in a seperate attribute for sorting later.
         for(Product product: products) {
             product.setTotalScore(product.rating + movieSales[product.getId()]);
-            //System.out.println("Total score of movie number " + product.getId() + " is " + product.getTotalScore());
         }
     }
 

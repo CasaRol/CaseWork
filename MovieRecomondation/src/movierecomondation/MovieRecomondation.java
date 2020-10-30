@@ -34,7 +34,6 @@ public class MovieRecomondation {
                 for(int i = 1; i <= result.length; i++){
                     System.out.println("Recomondation #" + i + ": " + result[i-1].getName() + " Price (USD): " + result[i-1].getPrice());
                 }
-
                 break;
             case 2:
                 System.out.println("2 was chosen");
