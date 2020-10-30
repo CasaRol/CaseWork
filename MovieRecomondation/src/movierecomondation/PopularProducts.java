@@ -27,7 +27,7 @@ public class PopularProducts {
         readUsers();
     }
     
-    public void popularProd() {
+    public Product[] popularProd(int resultAmount) {
         
         System.out.println(products.get(0).name);
         System.out.println(users.get(0).name);
@@ -36,8 +36,17 @@ public class PopularProducts {
         
         sortProduct();   
         
+        Product result[] = new Product[resultAmount];
         
-        //return ;
+        for(int i = 0; i < result.length; i++) {
+            result[i] = products.get(i);
+        }
+        
+        for(Product prod: result) {
+            System.out.println("ID = " + prod.getId() + " - Name = " + prod.getName());
+        }
+        
+        return result;
     }
     
     
