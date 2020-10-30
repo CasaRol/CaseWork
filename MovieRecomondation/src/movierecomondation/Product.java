@@ -13,6 +13,7 @@ public class Product {
     String[] keywords;
     double rating;
     int price;
+    double totalScore;                                                          //Combined sales across customers plus rating = Most liked and popular movie
 
     public Product(int id, String name, String year, String[] keywords, double rating, int price) {
         this.id = id;
@@ -21,6 +22,7 @@ public class Product {
         this.keywords = keywords;
         this.rating = rating;
         this.price = price;
+        this.totalScore = totalScore;
     }
 
     public int getId() {
@@ -46,6 +48,15 @@ public class Product {
     public int getPrice() {
         return price;
     }
+
+    public double getTotalScore() {
+        return totalScore;
+    }
+
+    public void setTotalScore(double totalScore) {
+        this.totalScore = totalScore;
+    }
+    
     
     
 }

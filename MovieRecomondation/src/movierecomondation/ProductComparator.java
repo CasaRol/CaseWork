@@ -18,9 +18,9 @@ public class ProductComparator implements Comparator<Product>{
 
     @Override
     public int compare(Product o1, Product o2) {
-        if(o1.getRating() > o2.getRating()) {
+        if(o1.getTotalScore()> o2.getTotalScore()) {
             return -1;
-        } else if(o1.getRating() < o2.getRating()) {
+        } else if(o1.getTotalScore()< o2.getTotalScore()) {
             return 1;
         } else {
             return 0;

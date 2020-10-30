@@ -32,8 +32,9 @@ public class PopularProducts {
         System.out.println(products.get(0).name);
         System.out.println(users.get(0).name);
         
-        sortProduct();                                                          //Sorts products in ratings (decending)
-        findPopularMovie();
+        calcCombinedScore();
+        
+        sortProduct();   
         
         
         //return ;
@@ -46,7 +47,6 @@ public class PopularProducts {
         try (Scanner scan = new Scanner(new File("Assets/Products.txt"))) {     //Autocloseable Scanner
             while (scan.hasNextLine()) {
                 String tmpLine = scan.nextLine();
-                //System.out.println(tmpLine);
                 String[] part = tmpLine.split(",");
 
                 int id = Integer.parseInt(part[0]);
@@ -110,13 +110,29 @@ public class PopularProducts {
 
     private void sortProduct() {
         Collections.sort(products, new ProductComparator());
-        products.forEach((rating) -> {
-            System.out.println(rating.getRating());
-        });
+        for(Product product: products) {
+            System.out.println("Movie with ID " + product.getId() + " reached a total score of " + product.getTotalScore());
+        }
     }
 
-    private void findPopularMovie() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void calcCombinedScore() {
+        int movieSales[] = new int[41];
+        
+        for(User user : users) {
+            for(int movie: user.getPurchased()) {
+                //System.out.println("index " + movie + " is being inserted");
+                movieSales[movie] += 1;
+            }
+        }
+        
+        for(int sale: movieSales) {
+            //System.out.println(sale);
+        }
+        
+        for(Product product: products) {
+            product.setTotalScore(product.rating + movieSales[product.getId()]);
+            //System.out.println("Total score of movie number " + product.getId() + " is " + product.getTotalScore());
+        }
     }
 
     
