@@ -22,6 +22,30 @@ public class Product {
         this.rating = rating;
         this.price = price;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public String[] getKeywords() {
+        return keywords;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public int getPrice() {
+        return price;
+    }
     
     
 }

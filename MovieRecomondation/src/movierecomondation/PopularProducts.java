@@ -8,7 +8,7 @@ package movierecomondation;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -32,6 +32,10 @@ public class PopularProducts {
         System.out.println(products.get(0).name);
         System.out.println(users.get(0).name);
         
+        sortProduct();                                                          //Sorts products in ratings (decending)
+        findPopularMovie();
+        
+        
         //return ;
     }
     
@@ -47,7 +51,7 @@ public class PopularProducts {
 
                 int id = Integer.parseInt(part[0]);
                 String name = part[1].substring(1);
-                String year = part[2].trim();                                          //String as year shouldn't be manitpulated as an int
+                String year = part[2].trim();                                   //String as year shouldn't be manitpulated as an int
                 String[] keywords = new String[5];
                 for (int i = 0; i < 5; i++) {
                     String tmpValue = part[i+3].trim();
@@ -56,13 +60,10 @@ public class PopularProducts {
                 double rating = Double.parseDouble(part[8]);
                 int price = Integer.parseInt(part[9]);
 
-                Product newProduct = new Product(id, name, year, keywords, rating, price);
-                products.add(newProduct);
+                //Create product object for this entry
+                products.add(new Product(id, name, year, keywords, rating, price));
                 
-                //System.out.println("newProduct = " + newProduct.keywords[0]);
             }
-
-            //System.out.println(products.get(3).toString());
 
         } catch (FileNotFoundException fnf) {
             fnf.printStackTrace();
@@ -94,9 +95,8 @@ public class PopularProducts {
                     purchased.add(Integer.parseInt(part));                      //Parsing to int for comparason with popularProduct (Both Id's now int)
                 }
 
-                
-                User newUser = new User(id, name, viewed, purchased);
-                users.add(newUser);
+                //Create user object for this entry
+                users.add(new User(id, name, viewed, purchased));
                 
             }
             
@@ -107,5 +107,18 @@ public class PopularProducts {
         
         return users;
     }
+
+    private void sortProduct() {
+        Collections.sort(products, new ProductComparator());
+        products.forEach((rating) -> {
+            System.out.println(rating.getRating());
+        });
+    }
+
+    private void findPopularMovie() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }
