@@ -5,17 +5,42 @@
  */
 package movierecomondation;
 
+import java.util.ArrayList;
+
 
 public class User {
-    int name;
-    int[] viewed;
-    int[] purchased;
+    int id;
+    String name;
+    ArrayList<Integer> viewed;
+    ArrayList<Integer> purchased;
 
-    public User(int name, int[] viewed, int[] purchased) {
+    public User(int id, String name, ArrayList<Integer> viewed, ArrayList<Integer> purchased) {
+        this.id = id;
         this.name = name;
         this.viewed = viewed;
         this.purchased = purchased;
     }
+
+    public int getId() {
+        return id;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Integer> getViewed() {
+        return viewed;
+    }
+
+    public ArrayList<Integer> getPurchased() {
+        return purchased;
+    }
+
+    
+    
+    
+    
     
     
 }

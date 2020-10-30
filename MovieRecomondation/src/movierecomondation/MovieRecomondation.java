@@ -28,7 +28,7 @@ public class MovieRecomondation {
         switch (choice) {
             case 1:
                 System.out.println("1 was chosen");
-                new PopularProducts().readProducts();
+                new PopularProducts().popularProd();
 
                 break;
             case 2:
