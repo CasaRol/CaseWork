@@ -7,10 +7,6 @@ package movierecomondation;
 
 import java.util.Comparator;
 
-/**
- *
- * @author Alexa
- */
 public class ProductComparator implements Comparator<Product>{
 
     public ProductComparator() {
