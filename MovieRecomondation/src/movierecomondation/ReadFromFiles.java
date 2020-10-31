@@ -21,14 +21,14 @@ public class ReadFromFiles {
         
         ArrayList<Product> products = new ArrayList();
         
-        try (Scanner scan = new Scanner(new File("Assets/Products.txt"))) {     //Autocloseable Scanner
+        try (Scanner scan = new Scanner(new File("Assets/Products.txt"))) { //Autocloseable Scanner
             while (scan.hasNextLine()) {
                 String tmpLine = scan.nextLine();
                 String[] part = tmpLine.split(",");
 
                 int id = Integer.parseInt(part[0]);
                 String name = part[1].substring(1);
-                String year = part[2].trim();                                   //String as year shouldn't be manitpulated as an int
+                String year = part[2].trim();   //String as year shouldn't be manitpulated as an int
                 String[] keywords = new String[5];
                 for (int i = 0; i < 5; i++) {
                     String tmpValue = part[i+3].trim();
@@ -53,8 +53,7 @@ public class ReadFromFiles {
         
         ArrayList<User> users = new ArrayList<>();
         
-        
-        try(Scanner scan = new Scanner(new File("./Assets/users.txt"))) {
+        try(Scanner scan = new Scanner(new File("./Assets/users.txt"))) {   //Autocloseable Scanner
             while(scan.hasNextLine()) {
                 String tmpLine = scan.nextLine();
                 String[] parts = tmpLine.split(", ");
@@ -63,15 +62,15 @@ public class ReadFromFiles {
                 String name = parts[1];
                 
                 String[] views = parts[2].split(";");
-                ArrayList<Integer> viewed = new ArrayList();                    //ArrayList as size may vary between users
+                ArrayList<Integer> viewed = new ArrayList();    //ArrayList as size may vary between users
                 for(String part : views) {                                      
-                    viewed.add(Integer.parseInt(part));                         //Parsing to int for comparason with popularProduct (Both Id's now int)
+                    viewed.add(Integer.parseInt(part));
                 }
                 
                 String[] purchase = parts[3].split(";");
-                ArrayList<Integer> purchased = new ArrayList();                 //ArrayList as size may vary between users
+                ArrayList<Integer> purchased = new ArrayList(); //ArrayList as size may vary between users
                 for(String part : purchase) {
-                    purchased.add(Integer.parseInt(part));                      //Parsing to int for comparason with popularProduct (Both Id's now int)
+                    purchased.add(Integer.parseInt(part));
                 }
 
                 //Create user object for this file line
@@ -91,10 +90,9 @@ public class ReadFromFiles {
         
         ArrayList<CurrentSession> sessionData = new ArrayList<>();
         
-        try(Scanner scan = new Scanner(new File("./Assets/CurrentUserSession.txt"))) {
+        try(Scanner scan = new Scanner(new File("./Assets/CurrentUserSession.txt"))) {  //Autocloseable Scanner
             while(scan.hasNextLine()) {
                 String tmpLine = scan.nextLine();
-                
                 String[] parts = tmpLine.split(", ");
                 
                 int userID = Integer.parseInt(parts[0].trim());
@@ -115,6 +113,7 @@ public class ReadFromFiles {
         
     }
     
+    //Following methods made to ensure encapsulation 
     
     public ArrayList<User> getUsers() {
         return readUsers();

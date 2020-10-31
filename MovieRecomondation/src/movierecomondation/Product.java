@@ -13,7 +13,7 @@ public class Product {
     String[] keywords;
     double rating;
     int price;
-    double totalScore;                                                          //Combined sales across customers plus rating = Most liked and popular movie
+    double totalScore;  //Custom attribute - Used as a score for recommondation prioritization
 
     public Product(int id, String name, String year, String[] keywords, double rating, int price) {
         this.id = id;

@@ -35,6 +35,8 @@ public class MovieRecomondation {
                     for (int i = 1; i <= resultPart1.length; i++) {
                         System.out.println("Recomondation #" + i + ": " + resultPart1[i - 1].getName() + " - Price: $" + resultPart1[i - 1].getPrice());
                     }
+                    
+                    System.out.println("________________________________________"); //Seperation between results
                     break;
                 case 2:
 
@@ -50,9 +52,10 @@ public class MovieRecomondation {
 
                         System.out.println("Hello " + users.get(data.userID - 1).getName() + "! You might also like these movies: ");
                         for (Product prod : resultPart2) {
-                            System.out.println("\"" + prod.getName() + "\" " + prod.getYear() + " Rating: " + prod.getRating() + " - Only $" + prod.getPrice() + " XXX myRating = " + prod.getTotalScore());
+                            System.out.println("\"" + prod.getName() + "\" " + prod.getYear() + " Rating: " + prod.getRating() + " - Only $" + prod.getPrice());
                         }
-                        System.out.println("________________________________________");
+                        
+                        System.out.println("________________________________________"); //Seperation between users results
                     }
 
                     break;

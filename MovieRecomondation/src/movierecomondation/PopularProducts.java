@@ -42,7 +42,7 @@ public class PopularProducts {
 
         int sales[] = amountSold();
 
-        products = rff.getProducts();                                       //Clear list from previous recommondation
+        products = rff.getProducts();   //Clear list from previous recommondation
         String[] tags = products.get(productID - 1).getKeywords();
         List<String> checkList = Arrays.asList(tags);
 
@@ -53,7 +53,7 @@ public class PopularProducts {
                 continue;
             }
 
-            double recScore = 0;                                               //For adding up total recommondation score
+            double recScore = 0;    //For adding up total recommondation score
 
             //Finding keyword matches and adding +1 per match
             for (String tag : prod.keywords) {
@@ -84,7 +84,7 @@ public class PopularProducts {
     }
 
     private void sortProduct() {
-        Collections.sort(products, new ProductComparator());                    //Might be a redundant method. Alternative could be to make it more generic.
+        Collections.sort(products, new ProductComparator());    //Sorting for product totalScore in decending order
     }
 
     private void calcCombinedScore() {
@@ -98,9 +98,9 @@ public class PopularProducts {
     }
 
     private int[] amountSold() {
-        int saleCount[] = new int[41];                                          //41 length in order to ignore zero-indexing
+        int saleCount[] = new int[41];  //41 length in order to ignore zero-indexing
 
-        //Counting amount of movies sold. ATTENTION: Intentionally circumventing zero-indexing for the index to match movie-ID later
+        //Counting amount of movies sold. ATTENTION: Intentionally circumventing zero-indexing for the index to match movie-IDs
         for (User user : users) {
             for (int movieID : user.getPurchased()) {
                 saleCount[movieID] += 1;
