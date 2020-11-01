@@ -5,10 +5,6 @@
  */
 package movierecommendation;
 
-/**
- *
- * @author Alexa
- */
 public class CurrentSession {
     
     int userID;
