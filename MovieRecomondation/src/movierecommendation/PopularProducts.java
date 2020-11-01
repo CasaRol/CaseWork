@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movierecomondation;
+package movierecommendation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,12 +37,12 @@ public class PopularProducts {
         return result;
     }
 
-    public Product[] personalRecommondation(int productID, int resultAmount) {
+    public Product[] personalRecommendation(int productID, int resultAmount) {
         Product result[] = new Product[resultAmount];
 
         int sales[] = amountSold();
 
-        products = rff.getProducts();   //Clear list from previous recommondation
+        products = rff.getProducts();   //Clear list from previous recommendation
         String[] tags = products.get(productID - 1).getKeywords();
         List<String> checkList = Arrays.asList(tags);
 
@@ -53,7 +53,7 @@ public class PopularProducts {
                 continue;
             }
 
-            double recScore = 0;    //For adding up total recommondation score
+            double recScore = 0;    //For adding up total recommendation score
 
             //Finding keyword matches and adding +1 per match
             for (String tag : prod.keywords) {
@@ -67,8 +67,8 @@ public class PopularProducts {
             //Adding weight of product rating (subtract 3 from rating)
             recScore += (prod.rating - 3);
 
-            //Adding sales percentage score to total recScore
-            recScore += sales[prod.id];
+            //Adding +1 per sale to total recScore
+            recScore += sales[prod.id]; //For larger systems, this should be a percentage count for less weight in recommendation
 
             //Add the total score to the product
             prod.setTotalScore(recScore);

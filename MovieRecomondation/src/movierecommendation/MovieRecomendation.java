@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movierecomondation;
+package movierecommendation;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MovieRecomondation {
+public class MovieRecomendation {
 
     /**
      * @param args the command line arguments
@@ -33,7 +33,7 @@ public class MovieRecomondation {
                     System.out.println("Based on rating and purchase rate the following titles are recommended:\n");
 
                     for (int i = 1; i <= resultPart1.length; i++) {
-                        System.out.println("Recomondation #" + i + ": " + resultPart1[i - 1].getName() + " - Price: $" + resultPart1[i - 1].getPrice());
+                        System.out.println("Recommendation #" + i + ": " + resultPart1[i - 1].getName() + " - Price: $" + resultPart1[i - 1].getPrice());
                     }
                     
                     System.out.println("________________________________________"); //Seperation between results
@@ -48,7 +48,7 @@ public class MovieRecomondation {
                     ArrayList<CurrentSession> sessionData = rff.getSessionData();
 
                     for (CurrentSession data : sessionData) {
-                        Product[] resultPart2 = userRec.personalRecommondation(data.productID, 5);  //Change number in parameter for custom amount of results (1-40)
+                        Product[] resultPart2 = userRec.personalRecommendation(data.productID, 5);  //Change number in parameter for custom amount of results (1-40)
 
                         System.out.println("Hello " + users.get(data.userID - 1).getName() + "! You might also like these movies: ");
                         for (Product prod : resultPart2) {

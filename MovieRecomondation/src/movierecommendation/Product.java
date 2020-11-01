@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movierecomondation;
+package movierecommendation;
 
 
 public class Product {
@@ -13,7 +13,7 @@ public class Product {
     String[] keywords;
     double rating;
     int price;
-    double totalScore;  //Custom attribute - Used as a score for recommondation prioritization
+    double totalScore;  //Custom attribute - Used as a score for recommendation prioritization
 
     public Product(int id, String name, String year, String[] keywords, double rating, int price) {
         this.id = id;

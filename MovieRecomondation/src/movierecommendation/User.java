@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package movierecomondation;
+package movierecommendation;
 
 import java.util.ArrayList;
 
