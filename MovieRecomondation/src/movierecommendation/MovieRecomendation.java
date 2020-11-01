@@ -15,20 +15,20 @@ public class MovieRecomendation {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Welcome to my solution for this case");
+        System.out.println("Welcome to my solution for this case!");
 
         while (true) {
             System.out.println("Please select a number (1 or 2) for the respective part of the case followed by hitting [Enter]:");
             System.out.println("Enter 3 to exit the application");
 
-            Scanner scan = new Scanner(System.in);                                  //Scanner opened
+            Scanner scan = new Scanner(System.in);  //Scanner opened
             int choice = scan.nextInt();
 
             switch (choice) {
                 case 1:
                     PopularProducts popProd = new PopularProducts();
 
-                    Product[] resultPart1 = popProd.popularProd(5);                 //Change the parameter for more results returned to console (1-40 range)
+                    Product[] resultPart1 = popProd.popularProd(5); //Change the parameter for more results returned to console (1-40 range)
 
                     System.out.println("Based on rating and purchase rate the following titles are recommended:\n");
 
